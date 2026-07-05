@@ -3,115 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV - Talissa Dreossi</title>
+  <title>Curriculum Vitae - Talissa Dreossi</title>
 
   <style>
+    :root {
+      --bg: #0b0f19;
+      --card: #121a2a;
+      --text: #e8eefc;
+      --muted: #a9b4cc;
+      --accent: #4da3ff;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
       margin: 0;
-      color: #222;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
     }
 
     .container {
-      max-width: 900px;
-      margin: 60px auto;
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 70px 20px;
     }
 
     h1 {
       text-align: center;
-      margin-top: 0;
+      margin-bottom: 40px;
+      font-size: 2.8rem;
+    }
+
+    .section-title {
+      margin-top: 60px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+      color: var(--text);
     }
 
     /* Timeline */
     .timeline {
-      position: relative;
-      margin: 40px 0;
-      padding-left: 30px;
-      border-left: 3px solid #ddd;
+      border-left: 2px solid rgba(255,255,255,0.08);
+      padding-left: 25px;
     }
 
     .item {
-      margin-bottom: 30px;
       position: relative;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .item:hover {
+      transform: translateY(-3px);
+      background: #17233a;
     }
 
     .item::before {
       content: "";
       position: absolute;
-      left: -20px;
-      top: 3px;
-      width: 12px;
-      height: 12px;
-      background: #0066cc;
+      left: -34px;
+      top: 18px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
       border-radius: 50%;
     }
 
     .year {
-      font-weight: bold;
-      color: #0066cc;
-      margin-bottom: 5px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
     }
 
     .title {
-      font-weight: bold;
-      margin-bottom: 3px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .institution {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
     }
 
     .desc {
-      color: #555;
+      color: var(--muted);
+      font-size: 0.95rem;
       line-height: 1.5;
     }
 
-    .section-title {
-      font-weight: bold;
-      margin-top: 40px;
-      font-size: 1.3rem;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
-    }
-
-    .back {
-      text-align: center;
-      margin-top: 40px;
-    }
-
     a {
-      color: #0066cc;
+      color: var(--accent);
       text-decoration: none;
     }
 
     a:hover {
       text-decoration: underline;
     }
-    .institution {
-      font-style: italic;
-      color: #777;
-      margin-bottom: 5px;
+
+    .back {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 0.9rem;
+    }
+
+    .topbar a {
+      color: var(--muted);
+    }
+
+    .topbar a:hover {
+      color: var(--accent);
     }
   </style>
 </head>
 
 <body>
 
+<div class="topbar">
+  <a href="index.html">← Home</a>
+</div>
+
 <div class="container">
 
   <h1>Curriculum Vitae</h1>
 
-
-  <div class="section-title">Experience</div>
+    <div class="section-title">Experience</div>
   <div class="timeline">
 
     <div class="item">
       <div class="year">Nov. 2025 – Present</div>
       <div class="title">Teacher</div>
-      <div class="institution">- ISIS Paolino d'Aquileia<br>
-        - Convitto Nazionale Paolo Diacono<br>
-        - IT Zanon
+      <div class="institution">ISIS Paolino d'Aquileia · Convitto Nazionale Paolo Diacono · IT Zanon
         </div>
       <div class="desc">
         Computer Science high school teacher
@@ -230,7 +266,8 @@
       <div class="desc">
         <div class="institution">University of Udine</div>
         <i>Supervisor:</i> Prof. Agostino Dovier<br>
-        <i>PhD thesis:</i> Bridging Logic Programming and Deep Learning for Explainable AI through ILP
+        <i>PhD thesis:</i> Bridging Logic Programming and Deep Learning for Explainable AI through ILP<br>
+        <i>Website:</i> <a href="https://dmif.uniud.it/it/didattica/dottorato/iai/dottorandi/talissa-dreossi">PhD Profile</a>
       </div>
     </div>
 
@@ -261,7 +298,6 @@
         <i>Grade:</i> 104/110
       </div>
     </div>
-
     <div class="item">
       <div class="year">2010 – 2015</div>
       <div class="title">Diploma</div>
@@ -275,7 +311,7 @@
   </div>
 
   <div class="section-title">Publications</div>
-  <p>
+  <p style="color: var(--muted);">
     See full list on <a href="publications.html">publications page</a>.
   </p>
 
