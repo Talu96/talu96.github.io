@@ -3,155 +3,750 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Talissa Dreossi, PhD in Computer Science and Artificial Intelligence, working on explainable AI, logic programming, and neuro-symbolic systems." />
+  <meta property="og:title" content="Talissa Dreossi" />
+  <meta property="og:description" content="Research profile, CV, publications, thesis, and contact links for Talissa Dreossi." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <title>Talissa Dreossi</title>
 
   <style>
     :root {
       --bg: #0b0f19;
+      --panel: #101827;
       --card: #121a2a;
       --text: #e8eefc;
       --muted: #a9b4cc;
+      --soft: #7f8aa3;
       --accent: #4da3ff;
+      --accent-2: #6ee7b7;
+      --line: rgba(255,255,255,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(77, 163, 255, 0.14), transparent 32rem),
+        linear-gradient(180deg, #0b0f19 0%, #0d1320 46%, #0b0f19 100%);
       color: var(--text);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 16px;
+      background: rgba(11, 15, 25, 0.82);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .site-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 11px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      transition: color 0.18s ease, background 0.18s ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      outline: none;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 80px 20px;
+      padding: 0 22px;
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 50px;
+    .hero {
+      min-height: calc(100vh - 58px);
+      display: grid;
+      align-items: center;
+      padding: 72px 0 86px;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+    }
+
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      text-transform: uppercase;
     }
 
     h1 {
-      font-size: 3rem;
       margin: 0;
-      letter-spacing: -1px;
+      font-size: clamp(3rem, 9vw, 6.8rem);
+      line-height: 0.95;
+      font-weight: 800;
     }
 
     .subtitle {
-      margin-top: 12px;
+      margin-top: 22px;
       color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1.6;
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      line-height: 1.55;
+      max-width: 760px;
     }
 
-    .links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 50px;
+    .intro {
+      max-width: 720px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1rem;
     }
 
-    .card {
-      background: var(--card);
-      padding: 18px 20px;
-      border-radius: 12px;
-      text-decoration: none;
+    .hero-actions,
+    .social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 8px;
       color: var(--text);
-      transition: transform 0.15s ease, background 0.15s ease;
-      border: 1px solid rgba(255,255,255,0.05);
+      text-decoration: none;
+      background: rgba(255,255,255,0.04);
+      transition: transform 0.18s ease, background 0.18s ease, border 0.18s ease;
     }
 
-    .card:hover {
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(77, 163, 255, 0.5);
+      background: rgba(77, 163, 255, 0.12);
+      outline: none;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #06101f;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    section {
+      padding: 72px 0;
+      scroll-margin-top: 76px;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 16px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.85rem, 4vw, 3rem);
+    }
+
+    .section-note {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+      max-width: 620px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card,
+    .publication {
+      background: rgba(18, 26, 42, 0.88);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 18px 20px;
+      transition: transform 0.18s ease, background 0.18s ease, border 0.18s ease;
+    }
+
+    .card:hover,
+    .publication:hover,
+    .publication:focus-visible {
       transform: translateY(-3px);
       background: #17233a;
+      border-color: rgba(77, 163, 255, 0.24);
     }
 
-    .card h3 {
-      margin: 0 0 6px 0;
-      font-size: 1.1rem;
+    .timeline {
+      border-left: 2px solid var(--line);
+      padding-left: 25px;
     }
 
-    .card p {
-      margin: 0;
+    .item {
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .item::before {
+      content: "";
+      position: absolute;
+      left: -34px;
+      top: 22px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(77, 163, 255, 0.09);
+    }
+
+    .year {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+
+    .title {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .institution,
+    .authors {
       color: var(--muted);
       font-size: 0.95rem;
+      line-height: 1.45;
+      margin-bottom: 6px;
     }
 
-    .social {
-      margin-top: 40px;
-      text-align: center;
+    .institution {
+      font-style: italic;
     }
 
-    .social a {
-      color: var(--muted);
-      margin: 0 10px;
+    .desc,
+    .venue {
+      color: var(--soft);
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .desc a,
+    .social a,
+    .text-link {
+      color: var(--accent);
       text-decoration: none;
     }
 
-    .social a:hover {
-      color: var(--accent);
+    .desc a:hover,
+    .social a:hover,
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    .publication {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      margin-bottom: 14px;
+    }
+
+    .publication:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .top-button {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      background: rgba(18, 26, 42, 0.92);
+      color: var(--text);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.18s ease, transform 0.18s ease, background 0.18s ease;
+      backdrop-filter: blur(12px);
+      font-size: 1.2rem;
+    }
+
+    .top-button.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .top-button:hover,
+    .top-button:focus-visible {
+      background: rgba(77, 163, 255, 0.18);
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
     }
 
     footer {
-      margin-top: 80px;
+      padding: 54px 0 70px;
       text-align: center;
       color: var(--muted);
       font-size: 0.9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .button,
+      .card,
+      .publication,
+      .reveal {
+        transition: none;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 62px 0 48px;
+      }
+
+      section {
+        padding: 52px 0;
+      }
+
+      .section-heading,
+      .grid,
+      .split-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        padding-left: 18px;
+      }
+
+      .item::before {
+        left: -27px;
+      }
     }
   </style>
 </head>
 
 <body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="#home">Home</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#groups">Groups</a>
+    <a href="#publications">Publications</a>
+    <a href="#thesis">Thesis</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <div class="container">
-
-    <header>
-      <h1>Talissa Dreossi</h1>
-
-      <div class="subtitle">
-        PhD in Computer Science and Artificial Intelligence<br>
-        Explainable AI · Logic Programming · Neuro-symbolic Systems
+  <main class="container">
+    <header class="hero" id="home">
+      <div class="hero-inner reveal">
+        <div class="eyebrow">Explainable AI · Logic Programming · Neuro-symbolic Systems</div>
+        <h1>Talissa Dreossi</h1>
+        <div class="subtitle">PhD in Computer Science and Artificial Intelligence</div>
+        <p class="intro">
+          I work on explainable artificial intelligence, combining logic programming and machine learning to make automated decisions easier to inspect, justify, and improve.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#publications">View publications</a>
+          <a class="button" href="#experience">View experience</a>
+          <a class="button" href="#education">View education</a>
+          <a class="button" href="Bozza_Tesi_PhD_fin.pdf">Read thesis</a>
+          <a class="button" href="#contact">Contact me</a>
+        </div>
+        <div class="social" aria-label="Academic and professional profiles">
+          <a href="https://scholar.google.com/citations?user=L9ffQN8AAAAJ&hl=it&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://www.scopus.com/authid/detail.uri?authorId=59376711000" target="_blank" rel="noopener">Scopus</a>
+          <a href="https://orcid.org/0009-0007-1746-6500" target="_blank" rel="noopener">ORCID</a>
+          <a href="https://www.researchgate.net/profile/Talissa-Dreossi" target="_blank" rel="noopener">ResearchGate</a>
+          <a href="https://github.com/Talu96" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/talissa-dreossi/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
       </div>
     </header>
 
-    <div class="links">
+    <section id="experience" class="reveal">
+      <div class="section-heading">
+        <div>
+          <h2>Experience</h2>
+          <p class="section-note">Teaching, research, and applied AI development.</p>
+        </div>
+      </div>
 
-      <a class="card" href="cv.html">
-        <h3>CV</h3>
-        <p>Education, experience and timeline</p>
+      <div class="timeline">
+        <div class="item card">
+          <div class="year">Nov. 2025 - Present</div>
+          <div class="title">Teacher</div>
+          <div class="institution">ISIS Paolino d'Aquileia · Convitto Nazionale Paolo Diacono · IT Zanon</div>
+          <div class="desc">Computer Science high school teacher.</div>
+        </div>
+
+        <div class="item card">
+          <div class="year">Feb. 2024 - Sept. 2024</div>
+          <div class="title">Visiting PhD student</div>
+          <div class="institution">Imperial College London</div>
+          <div class="desc">PhD visiting student at the Department of Computing, supervised by Prof. Alessandra Russo, working on Explainable AI and Inductive Logic Programming.</div>
+        </div>
+
+        <div class="item card">
+          <div class="year">Oct. 2022 - Oct. 2025</div>
+          <div class="title">PhD student</div>
+          <div class="institution">University of Udine</div>
+          <div class="desc">PhD student in Computer Science and Artificial Intelligence.</div>
+        </div>
+
+        <div class="item card">
+          <div class="year">Dec. 2019 - Sept. 2022</div>
+          <div class="title">AI Full Stack Junior Developer</div>
+          <div class="institution">Thinking Flows srls</div>
+          <div class="desc">Apprenticeship focused on neural networks with TensorFlow, modern NLP, production-grade RASA chatbots, business logic integration, data preparation, and containerised deployments using Kubernetes.</div>
+        </div>
+
+        <div class="item card">
+          <div class="year">Jan. 2022 - Jun. 2022</div>
+          <div class="title">Teacher</div>
+          <div class="institution">Liceo Scientifico Marinelli</div>
+          <div class="desc">Substitute maths teacher.</div>
+        </div>
+
+        <div class="item card">
+          <div class="year">2019 - 2020</div>
+          <div class="title">Intern</div>
+          <div class="institution">Thinking Flows srls</div>
+          <div class="desc">Internship as AI developer; developed a deep learning model for image generation and 3D model production using Generative Adversarial Networks.</div>
+        </div>
+
+        <div class="item card">
+          <div class="year">2018 - 2020</div>
+          <div class="title">Tutor</div>
+          <div class="institution">University of Udine</div>
+          <div class="desc">Tutoring activity providing academic support for university students in the Department of Computer Science.</div>
+        </div>
+
+        <div class="item card">
+          <div class="year">2014</div>
+          <div class="title">Intern - Web Valley</div>
+          <div class="institution">Fondazione Bruno Kessler - FBK</div>
+          <div class="desc">Designed an open-source web platform to study childhood microbiota dysbiosis.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="reveal">
+      <div class="section-heading">
+        <div>
+          <h2>Education</h2>
+          <p class="section-note">Academic path and qualifications.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="year">2022 - 2025</div>
+          <div class="title">PhD in Artificial Intelligence</div>
+          <div class="institution">University of Udine</div>
+          <div class="desc">Supervisor: Prof. Agostino Dovier. Thesis: Bridging Logic Programming and Deep Learning for Explainable AI through ILP. <a href="https://dmif.uniud.it/it/didattica/dottorato/iai/dottorandi/talissa-dreossi" target="_blank" rel="noopener">PhD Profile</a></div>
+        </div>
+
+        <div class="card">
+          <div class="year">2025</div>
+          <div class="title">Teaching qualification</div>
+          <div class="desc">Class: A041.</div>
+        </div>
+
+        <div class="card">
+          <div class="year">2018 - 2020</div>
+          <div class="title">Master Degree in Computer Science</div>
+          <div class="institution">University of Udine</div>
+          <div class="desc">Thesis: Generative Adversarial Networks for Jewelry Image Generation and 3D Model Production. Grade: 104/110.</div>
+        </div>
+
+        <div class="card">
+          <div class="year">2018 - 2020</div>
+          <div class="title">Bachelor Degree in Computer Science</div>
+          <div class="institution">University of Udine</div>
+          <div class="desc">Thesis: Applicazione delle Reti Neurali Ricorrenti al Riconoscimento di Attività Fisiche. Grade: 104/110.</div>
+        </div>
+
+        <div class="card">
+          <div class="year">2010 - 2015</div>
+          <div class="title">Diploma</div>
+          <div class="institution">ISIS Arturo Malignani - Liceo delle Scienze Applicate</div>
+          <div class="desc">Grade: 98/100. Extracurricular: Maths Olympiad and European Union Science Olympiad bronze medal, 2013.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="groups" class="reveal">
+      <div class="section-heading">
+        <div>
+          <h2>Research Groups</h2>
+          <p class="section-note">Research communities and academic networks.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="year">2022 - 2026</div>
+          <div class="title">GULP</div>
+          <div class="desc">Gruppo Ricercatori ed Utenti Logic Programming. <a href="https://www.programmazionelogica.it/" target="_blank" rel="noopener">Website</a></div>
+        </div>
+
+        <div class="card">
+          <div class="year">2022 - 2026</div>
+          <div class="title">INdAM - GNCS</div>
+          <div class="desc">National Group for Scientific Computing. <a href="https://www.altamatematica.it/gncs/" target="_blank" rel="noopener">Website</a></div>
+        </div>
+
+        <div class="card">
+          <div class="year">2022 - 2026</div>
+          <div class="title">CLP Lab</div>
+          <div class="desc">
+            Constraint and Logic Programming Lab of the University of Udine, DMIF. <a href="https://clp.dimi.uniud.it/" target="_blank" rel="noopener">Website</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="reveal">
+      <div class="section-heading">
+        <div>
+          <h2>Publications</h2>
+          <p class="section-note">Selected research papers, workshops, journals, and preprints. Each card opens the publication source.</p>
+        </div>
+      </div>
+
+      <a class="publication" href="https://arxiv.org/abs/2601.03844" target="_blank" rel="noopener">
+        <div class="title">XAI-LAW: A Logic Programming Tool for Modeling, Explaining, and Learning Legal Decisions</div>
+        <div class="authors">Agostino Dovier, <strong>Talissa Dreossi</strong>, Andrea Formisano, Benedetta Strizzolo</div>
+        <div class="venue">arXiv preprint, 2026</div>
       </a>
 
-      <a class="card" href="pubblicazioni.html">
-        <h3>Publications</h3>
-        <p>Papers, workshops and journals</p>
+      <a class="publication" href="https://doi.org/10.1016/j.theriogenology.2025.117504" target="_blank" rel="noopener">
+        <div class="title">Evaluation of an Artificial Intelligence System for Bull Sperm Morphology Evaluation</div>
+        <div class="authors">Susy Urli, Francesca Corte Pause, <strong>Talissa Dreossi</strong>, Martina Crociati, Giuseppe Stradaioli</div>
+        <div class="venue"><em>Theriogenology</em>, Vol. 245, Article 117504, 2025</div>
       </a>
 
-      <a class="card" href="Bozza_Tesi_PhD_fin.pdf">
-        <h3>PhD thesis</h3>
-        <p>Bridging Logic Programming and Deep Learning for Explainability through ILP</p>
+      <a class="publication" href="https://escim2026.uca.es/wp-content/uploads/Book_of_abstracts_ESCIM_2024.pdf#page=45" target="_blank" rel="noopener">
+        <div class="title">Semi-automatic Knowledge Representation and Reasoning on Vague Crime Concepts</div>
+        <div class="authors"><strong>Talissa Dreossi</strong>, Manuele Dozzi, Luca Baron, Agostino Dovier, Andrea Formisano, Federico Costantini</div>
+        <div class="venue"><em>Computational Intelligence and Mathematics for Tackling Complex Problems 6</em>, Springer, pp. 87-95, 2025</div>
       </a>
 
-      <a class="card" href="mailto:talissa.dreossi@gmail.com">
-        <h3>Contact</h3>
-        <p>Email me directly</p>
+      <a class="publication" href="https://doi.org/10.1007/978-3-031-97879-1_10" target="_blank" rel="noopener">
+        <div class="title">Bridging Logic Programming and Deep Learning for Explainability through ILASP</div>
+        <div class="authors"><strong>Talissa Dreossi</strong></div>
+        <div class="venue">Doctoral Consortium at the 40th International Conference on Logic Programming, 2024</div>
       </a>
 
-    </div>
-    <div class="social">
-      <a href="https://scholar.google.com/citations?user=L9ffQN8AAAAJ&hl=it&oi=ao">Google Scholar</a>
-      <a href="https://www.scopus.com/authid/detail.uri?authorId=59376711000">Scopus</a>
-      <a href="https://orcid.org/0009-0007-1746-6500" target="_blank">ORCID</a>
-      <a href="https://www.researchgate.net/profile/Talissa-Dreossi" target="_blank">ResearchGate</a>
-      <a href="https://github.com/Talu96" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/talissa-dreossi/" target="_blank">LinkedIn</a>
-    </div>
+      <a class="publication" href="https://doi.org/10.1007/978-3-031-74209-5_20" target="_blank" rel="noopener">
+        <div class="title">Towards Explainable Weather Forecasting Through FastLAS</div>
+        <div class="authors"><strong>Talissa Dreossi</strong>, Agostino Dovier, Andrea Formisano, Mark Law, Agostino Manzato, Alessandra Russo, Matthew Tait</div>
+        <div class="venue"><em>Logic Programming and Nonmonotonic Reasoning</em>, LNCS, Springer, 2025</div>
+      </a>
 
-    <footer>
-      © 2026 Talissa Dreossi
-    </footer>
+      <a class="publication" href="https://air.uniud.it/bitstream/11390/1312465/1/paper12.pdf" target="_blank" rel="noopener">
+        <div class="title">Explainable AI for Sperm Morphology: Integrating YOLO with FastLAS</div>
+        <div class="authors"><strong>Talissa Dreossi</strong>, Agostino Dovier, Susy Urli, Francesca Corte Pause, Martina Crociati</div>
+        <div class="venue"><em>CEUR Workshop Proceedings</em>, Vol. 4003, 2025</div>
+      </a>
 
-  </div>
+      <a class="publication" href="https://air.uniud.it/bitstream/11390/1312464/2/paper11.pdf" target="_blank" rel="noopener">
+        <div class="title">TOLC-ASP: A Tool for Training Students for Admission Tests</div>
+        <div class="authors">Edda Dal Santo, Agostino Dovier, <strong>Talissa Dreossi</strong></div>
+        <div class="venue"><em>CEUR Workshop Proceedings</em>, Vol. 4003, 2025</div>
+      </a>
 
+      <a class="publication" href="https://hdl.handle.net/11390/1312924" target="_blank" rel="noopener">
+        <div class="title">How to Train Artificial Intelligence Systems for Morphological Assessment of Spermatozoa in Routine Bull Semen Analysis: Preliminary Results</div>
+        <div class="authors">Francesca Corte Pause, Susy Urli, Martina Crociati, <strong>Talissa Dreossi</strong>, Giuseppe Stradaioli</div>
+        <div class="venue"><em>Reproduction in Domestic Animals</em>, Vol. 60, 2025</div>
+      </a>
+
+      <a class="publication" href="https://air.uniud.it/bitstream/11390/1289224/1/short3.pdf" target="_blank" rel="noopener">
+        <div class="title">XAI-LAW: Towards a Logic Programming Tool for Taking and Explaining Legal Decisions</div>
+        <div class="authors">Agostino Dovier, <strong>Talissa Dreossi</strong>, Andrea Formisano</div>
+        <div class="venue"><em>CEUR Workshop Proceedings</em>, Vol. 3733, 2024</div>
+      </a>
+
+      <a class="publication" href="https://doi.org/10.1007/978-3-031-97879-1_10" target="_blank" rel="noopener">
+        <div class="title">Bridging Logic Programming and Deep Learning for Explainability through ILASP</div>
+        <div class="authors"><strong>Talissa Dreossi</strong></div>
+        <div class="venue"><em>Doctoral Consortium at ICLP</em>, 2024</div>
+      </a>
+
+      <a class="publication" href="https://doi.org/10.1007/978-3-031-74209-5_20" target="_blank" rel="noopener">
+        <div class="title">Towards Explainable Weather Forecasting Through FastLAS</div>
+        <div class="authors"><strong>Talissa Dreossi</strong>, Agostino Dovier, Andrea Formisano, Mark Law, Agostino Manzato, Alessandra Russo, Matthew Tait</div>
+        <div class="venue"><em>Logic Programming and Nonmonotonic Reasoning</em>, LNCS, Springer, 2024</div>
+      </a>
+
+      <a class="publication" href="https://air.uniud.it/bitstream/11390/1257704/1/paper14.pdf" target="_blank" rel="noopener">
+        <div class="title">Exploring ILASP Through Logic Puzzles Modelling</div>
+        <div class="authors"><strong>Talissa Dreossi</strong></div>
+        <div class="venue"><em>CEUR Workshop Proceedings</em>, Vol. 3428, 2023</div>
+      </a>
+
+      <a class="publication" href="https://air.uniud.it/bitstream/11390/1234670/2/paper_29.pdf" target="_blank" rel="noopener">
+        <div class="title">Modeling and Solving the Rush Hour Puzzle</div>
+        <div class="authors">Lorenzo Cian, <strong>Talissa Dreossi</strong>, Agostino Dovier</div>
+        <div class="venue"><em>CEUR Workshop Proceedings</em>, Vol. 3204, pp. 294-306, 2022</div>
+      </a>
+
+      <a class="publication" href="https://www.iris.unict.it/retrieve/dc4aa89d-52c7-4081-b65f-3d536b72490d/Atti%20Didamatica%202021_compressed.pdf#page=47" target="_blank" rel="noopener">
+        <div class="title">Recommended System for Individual Study at Home</div>
+        <div class="authors"><strong>Talissa Dreossi</strong></div>
+        <div class="venue"><em>Atti Convegno Nazionale</em>, p. 47</div>
+      </a>
+    </section>
+
+    <section id="thesis" class="reveal">
+      <div class="section-heading">
+        <div>
+          <h2>Thesis</h2>
+          <p class="section-note">My PhD thesis on explainability through inductive logic programming.</p>
+        </div>
+      </div>
+
+      <div class="split-grid">
+        <div class="card">
+          <div class="title">PhD thesis</div>
+          <div class="desc">Bridging Logic Programming and Deep Learning for Explainability through ILP.</div>
+          <p><a class="text-link" href="Bozza_Tesi_PhD_fin.pdf">Open thesis PDF</a></p>
+        </div>
+        <div class="card">
+          <div class="title">Research focus</div>
+          <div class="desc">The work connects symbolic learning and neural systems to make learned models easier to understand and inspect.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <div class="section-heading">
+        <div>
+          <h2>Contact</h2>
+          <p class="section-note">For collaborations, academic contacts, or questions about my work.</p>
+        </div>
+      </div>
+
+      <div class="split-grid">
+        <div class="card">
+          <div class="title">Email</div>
+          <div class="desc">Send me a direct message without exposing the address on the page.</div>
+          <p><a class="button" id="email-link" href="#contact">Email me</a></p>
+        </div>
+        <div class="card">
+          <div class="title">Profiles</div>
+          <div class="desc">You can also find my academic and professional profiles at the top of the page.</div>
+          <p><a class="text-link" href="#home">Back to profiles</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button class="top-button" type="button" aria-label="Scroll to top">↑</button>
+
+  <footer>
+    © 2026 Talissa Dreossi
+  </footer>
+
+  <script>
+    const revealItems = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    const topButton = document.querySelector(".top-button");
+
+    window.addEventListener("scroll", () => {
+      topButton.classList.toggle("is-visible", window.scrollY > 500);
+    });
+
+    topButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.querySelector("#email-link").addEventListener("click", (event) => {
+      event.preventDefault();
+      const user = String.fromCharCode(116, 97, 108, 105, 115, 115, 97, 46, 100, 114, 101, 111, 115, 115, 105);
+      const domain = String.fromCharCode(103, 109, 97, 105, 108, 46, 99, 111, 109);
+      window.location.href = ["mai", "lto:", user, "@", domain].join("");
+    });
+  </script>
 </body>
 </html>
